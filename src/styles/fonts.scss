@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=La+Belle+Aurore&family=Yanone+Kaffeesatz:wght@400;600;700&display=swap");
+
+:root {
+	--font-title: "Yanone Kaffeesatz", sans-serif;
+}
+
+* {
+	font-family: var(--font-title);
+	font-weight: normal;
+}

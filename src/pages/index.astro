@@ -1,16 +1,41 @@
 ---
-const w = "kaj";
+import BaseLayout from "@layouts/BaseLayout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>{w}</h1>
-	</body>
-</html>
+<BaseLayout pageTitle="Hello World!">
+	<div class="background">
+		<div class="vincent">
+			<img
+				class="foreground"
+				width="100%"
+				height="auto"
+				src="/img/foreground.png"
+				alt=""
+			/>
+			<img width="30%" src="/img/vincent.png" alt="" />
+		</div>
+		<div class="background">
+			<img width="100%" height="auto" src="/img/lower-foreground.png" alt="" />
+		</div>
+	</div>
+</BaseLayout>
+
+<style lang="scss">
+	.background {
+		background-image: url("/img/background.jpg");
+		background-size: fill;
+		background-repeat: repeat;
+		background-position: center center;
+	}
+	.foreground {
+		position: absolute;
+	}
+	.vincent {
+		position: relative;
+		width: 100vw;
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: self-end;
+	}
+</style>

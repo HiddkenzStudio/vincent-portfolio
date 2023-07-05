@@ -1,0 +1,46 @@
+---
+import NavLinks from "./NavLinks.astro";
+---
+
+<header>
+	<nav>
+		<ul>
+			<NavLinks />
+			<li class="hamburger">
+				<button id="btn-hamburger">
+					<img
+						src="/svg/hamburger.svg"
+						alt="Hamburger menu for navigation links on mobile"
+					/>
+				</button>
+			</li>
+		</ul>
+	</nav>
+</header>
+
+<style lang="scss">
+	@use "@styles/variables.scss" as media;
+
+	nav {
+		position: fixed;
+		width: 100vw;
+		& ul {
+			display: flex;
+			justify-content: space-between;
+		}
+		.hamburger {
+			display: flex;
+			list-style: none;
+			& a {
+				text-decoration: none;
+			}
+			@media only screen and (min-width: media.$media-phone) {
+				display: none;
+			}
+		}
+		#btn-hamburger {
+			background-color: transparent;
+			border: none;
+		}
+	}
+</style>
