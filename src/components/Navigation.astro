@@ -23,10 +23,13 @@ import NavLinks from "./NavLinks.astro";
 
 	nav {
 		position: fixed;
+		z-index: 100;
 		width: 100vw;
 		& ul {
+			padding-inline: 20vw;
+			width: 100vw;
 			display: flex;
-			justify-content: space-between;
+			justify-content: space-around;
 		}
 		.hamburger {
 			display: flex;
@@ -36,6 +39,7 @@ import NavLinks from "./NavLinks.astro";
 			}
 			@media only screen and (min-width: media.$media-phone) {
 				display: none;
+				justify-content: space-around;
 			}
 		}
 		#btn-hamburger {

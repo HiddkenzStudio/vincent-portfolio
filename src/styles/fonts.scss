@@ -1,10 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=La+Belle+Aurore&family=Yanone+Kaffeesatz:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=La+Belle+Aurore&family=Oswald:wght@400;500;600&display=swap");
 
 :root {
-	--font-title: "Yanone Kaffeesatz", sans-serif;
+	--font-title: "Oswald", sans-serif;
+	--font-quote: "La Belle Aurore", cursive;
 }
 
 * {
 	font-family: var(--font-title);
 	font-weight: normal;
+}
+
+h1 {
+	line-height: 100%;
+	font-size: clamp(2rem, 9.5vw, 9.5rem);
+	white-space: nowrap;
+	font-weight: 700;
 }
