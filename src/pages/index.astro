@@ -2,6 +2,9 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Quote from "@components/Quote.astro";
 import SectionLayout from "@layouts/SectionLayout.astro";
+import Painting from "@components/Painting.astro";
+
+const paintings = await Astro.glob("./paintings/*.md");
 ---
 
 <BaseLayout pageTitle="Hello World!">
@@ -37,7 +40,19 @@ import SectionLayout from "@layouts/SectionLayout.astro";
 	/>
 
 	<SectionLayout title="My Work">
-		<p>hello</p>
+		{
+			paintings.map((painting) => {
+				return (
+					<Painting
+						cardLayout={painting.frontmatter.cardLayout}
+						title={painting.frontmatter.title}
+						description={painting.frontmatter.description}
+						date={painting.frontmatter.date}
+						painting={painting.frontmatter.painting}
+					/>
+				);
+			})
+		}
 	</SectionLayout>
 
 	<SectionLayout title="My Story">

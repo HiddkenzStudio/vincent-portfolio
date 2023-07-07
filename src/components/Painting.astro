@@ -1,0 +1,42 @@
+---
+const { cardLayout, painting, paintingAlt, title, date, description } =
+	Astro.props;
+---
+
+<article class={cardLayout}>
+	<div>
+		<img src={painting} alt={paintingAlt} />
+	</div>
+	<div>
+		<h3>{title}</h3>
+		<h4>{date}</h4>
+		<hr />
+		<p>{description}</p>
+	</div>
+</article>
+
+<style lang="scss">
+	@use "@styles/variables" as media;
+
+	article {
+		margin-block: 15rem;
+		margin-inline: 2rem;
+		div img {
+			width: 100%;
+		}
+	}
+
+	@media only screen and (min-width: media.$media-phone) {
+		.layout-1 {
+			display: grid;
+			grid-template-columns: repeat(2, 50%);
+			gap: 1.5rem;
+		}
+	}
+
+	.layout-2 {
+		div img {
+			height: 60vh;
+		}
+	}
+</style>
