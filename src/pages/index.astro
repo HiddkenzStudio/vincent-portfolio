@@ -3,7 +3,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 ---
 
 <BaseLayout pageTitle="Hello World!">
-	<div class="background">
+	<section id="hero" class="background">
 		<div class="foreground-wrapper">
 			<img
 				class="foreground"
@@ -21,10 +21,14 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 			</div>
 			<img class="vincent" height="auto" src="/img/vincent.png" alt="" />
 		</div>
-		<div class="background">
-			<img width="100%" height="auto" src="/img/lower-foreground.png" alt="" />
-		</div>
-	</div>
+		<img
+			class="background"
+			width="100%"
+			height="auto"
+			src="/img/lower-foreground.png"
+			alt=""
+		/>
+	</section>
 </BaseLayout>
 
 <style lang="scss">
@@ -49,7 +53,6 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 		width: 70ch;
 		z-index: 1;
 	}
-
 	.header {
 		height: 100vh;
 		padding-inline: 20%;
