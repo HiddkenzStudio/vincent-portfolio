@@ -16,3 +16,16 @@ h1 {
 	white-space: nowrap;
 	font-weight: 700;
 }
+
+h2 {
+	font-size: clamp(2rem, 8vw, 8rem);
+	font-weight: 400;
+	text-align: center;
+}
+
+blockquote {
+	font-family: var(--font-quote);
+	font-size: clamp(1.2rem, 3vw, 2rem);
+	text-align: center;
+	line-height: 140%;
+}

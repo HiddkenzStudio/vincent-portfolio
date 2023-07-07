@@ -1,5 +1,7 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import Quote from "@components/Quote.astro";
+import SectionLayout from "@layouts/SectionLayout.astro";
 ---
 
 <BaseLayout pageTitle="Hello World!">
@@ -29,6 +31,24 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 			alt=""
 		/>
 	</section>
+
+	<Quote
+		body="Greetings, kindred soul. I am Vincent van Gogh, a passionate artist whose heart beats with the rhythm of colors and the essence of nature. Allow me to share a glimpse into the depths of my artistic journey and the world that dances within my brushstrokes."
+	/>
+
+	<SectionLayout title="My Work">
+		<p>hello</p>
+	</SectionLayout>
+
+	<SectionLayout title="My Story">
+		<Quote
+			body="Instead of giving way to despair, I took the way of active melancholy as long as I had strength for activity, or in other words, I preferred the melancholy that hopes and aspires and searches to the one that despairs, mournful and stagnant."
+		/>
+
+		<Quote
+			body="Ah well, I risk my life for my own work and my reason has half foundered in it. But what can you do?"
+		/>
+	</SectionLayout>
 </BaseLayout>
 
 <style lang="scss">
