@@ -8,6 +8,13 @@ body {
 	background-color: var(--color-dominant);
 }
 
+.green-background {
+	background-color: var(--color-complementary);
+	* {
+		color: var(--color-dominant);
+	}
+}
+
 h1 {
 	color: var(--color-accent);
 }

@@ -11,7 +11,6 @@ const { cardLayout, painting, paintingAlt, title, date, description } =
 			<h4>{date}</h4>
 		</div>
 		<div>
-			<hr />
 			<p>{description}</p>
 		</div>
 	</div>
@@ -25,9 +24,10 @@ const { cardLayout, painting, paintingAlt, title, date, description } =
 		margin-inline: 2vw;
 		img {
 			width: 100%;
-			border: 0.3rem solid transparent; /* Set a transparent solid border */
+			height: 80vh;
+			border: 0.3rem solid transparent;
 			padding: 0.5rem;
-			border-image: linear-gradient(to top, var(--color-accent), #00000000) 1; /* Apply linear gradient as the border image */
+			border-image: linear-gradient(to top, var(--color-accent), #00000000) 1;
 		}
 		.content {
 			display: flex;
@@ -43,28 +43,46 @@ const { cardLayout, painting, paintingAlt, title, date, description } =
 				font-family: var(--font-quote);
 				font-size: 1.2rem;
 			}
+			div p {
+				padding-top: 0.5rem;
+				border-top: 0.3rem solid var(--color-complementary);
+			}
 		}
 	}
 
 	@media only screen and (min-width: media.$media-phone) {
 		.layout-1 {
 			display: grid;
-			grid-template-columns: repeat(2, 47vw);
+			grid-template-columns: 60vw auto;
 			gap: 1.5rem;
 		}
 
 		.layout-2 {
+			.content {
+				padding-top: 1.5rem;
+				display: grid;
+				grid-template-columns: 60vw auto;
+				div p {
+					border-top: none;
+					padding-left: 0.5rem;
+					border-left: 0.3rem solid var(--color-complementary);
+				}
+			}
 			img {
 				height: 60vh;
-				margin-bottom: 2rem;
 			}
 		}
 
 		.layout-3 {
 			display: grid;
-			grid-template-columns: repeat(2, 50%);
+			grid-template-columns: auto 60vw;
 			gap: 1.5rem;
 			margin-right: 0;
+			img {
+				border-right: none;
+				padding-right: 0rem;
+				border-image: linear-gradient(to right, var(--color-accent), #00000000) 1; /* Apply linear gradient as the border image */
+			}
 			& :first-child {
 				order: 1;
 			}
