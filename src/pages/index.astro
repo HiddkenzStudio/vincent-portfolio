@@ -8,108 +8,107 @@ const paintings = await Astro.glob("./paintings/*.md");
 ---
 
 <BaseLayout pageTitle="Hello World!">
-	<section id="hero" class="background">
-		<div class="foreground-wrapper">
-			<img
-				class="foreground"
-				width="100%"
-				height="auto"
-				src="/img/foreground.png"
-				alt=""
-			/>
-			<div class="header">
-				<h1>HELLO MY NAME IS</h1>
-				<div class="overlap">
-					<h1>VINCENT</h1>
-					<h1>VINCENT</h1>
-				</div>
-			</div>
-			<img class="vincent" height="auto" src="/img/vincent.png" alt="" />
-		</div>
-		<img
-			class="background"
-			width="100%"
-			height="auto"
-			src="/img/lower-foreground.png"
-			alt=""
-		/>
-	</section>
+  <section id="hero" class="background">
+    <div class="foreground-wrapper">
+      <img
+        class="foreground"
+        width="100%"
+        height="auto"
+        src="/img/foreground.png"
+        alt=""
+      />
+      <div class="header">
+        <h1>HELLO MY NAME IS</h1>
+        <div class="overlap">
+          <h1>VINCENT</h1>
+          <h1>VINCENT</h1>
+        </div>
+      </div>
+      <img class="vincent" height="auto" src="/img/vincent.png" alt="" />
+    </div>
+    <img
+      class="background"
+      width="100%"
+      height="auto"
+      src="/img/lower-foreground.png"
+      alt=""
+    />
+  </section>
 
-	<Quote
-		body="Greetings, kindred soul. I am Vincent van Gogh, a passionate artist whose heart beats with the rhythm of colors and the essence of nature. Allow me to share a glimpse into the depths of my artistic journey and the world that dances within my brushstrokes."
-	/>
+  <Quote
+    body="Greetings, kindred soul. I am Vincent van Gogh, a passionate artist whose heart beats with the rhythm of colors and the essence of nature. Allow me to share a glimpse into the depths of my artistic journey and the world that dances within my brushstrokes."
+  />
 
-	<SectionLayout id="work" title="My Work">
-		{
-			paintings.map((painting) => {
-				return (
-					<Painting
-						cardLayout={painting.frontmatter.cardLayout}
-						title={painting.frontmatter.title}
-						description={painting.frontmatter.description}
-						date={painting.frontmatter.date}
-						painting={painting.frontmatter.painting}
-					/>
-				);
-			})
-		}
-	</SectionLayout>
+  <SectionLayout id="work" title="My Work">
+    {
+      paintings.map((painting) => {
+        return (
+          <Painting
+            cardLayout={painting.frontmatter.cardLayout}
+            title={painting.frontmatter.title}
+            description={painting.frontmatter.description}
+            date={painting.frontmatter.date}
+            painting={painting.frontmatter.painting}
+          />
+        );
+      })
+    }
+  </SectionLayout>
 
-	<img src="/img/torn-green.png" alt="" />
+  <img src="/img/torn-green.png" alt="" />
 
-	<SectionLayout isGreen="true" id="story" title="My Story">
-		<Quote
-			body="Instead of giving way to despair, I took the way of active melancholy as long as I had strength for activity, or in other words, I preferred the melancholy that hopes and aspires and searches to the one that despairs, mournful and stagnant."
-		/>
+  <SectionLayout isGreen="true" id="story" title="My Story">
+    <Quote
+      body="Instead of giving way to despair, I took the way of active melancholy as long as I had strength for activity, or in other words, I preferred the melancholy that hopes and aspires and searches to the one that despairs, mournful and stagnant."
+    />
 
-		<Quote
-			body="Ah well, I risk my life for my own work and my reason has half foundered in it. But what can you do?"
-		/>
-	</SectionLayout>
+    <Quote
+      body="Ah well, I risk my life for my own work and my reason has half foundered in it. But what can you do?"
+    />
+  </SectionLayout>
 </BaseLayout>
 
 <style lang="scss">
-	.background {
-		background-image: url("/img/background.jpg");
-		background-size: fill;
-		background-repeat: repeat;
-		background-position: center center;
-	}
-	.foreground-wrapper {
-		position: relative;
-		height: 100vh;
-		display: flex;
-		justify-content: center;
-		align-items: self-end;
-	}
-	.foreground {
-		position: absolute;
-		z-index: 2;
-	}
-	.vincent {
-		width: 70ch;
-		z-index: 1;
-	}
-	.header {
-		height: 100vh;
-		padding-inline: 20%;
-		position: absolute;
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-		top: clamp(10rem, 15vh, 15rem);
-		.overlap {
-			h1 {
-				color: var(--color-accent);
-				font-size: clamp(5rem, 21vw, 21rem);
-				position: absolute;
-			}
-			:last-child {
-				color: transparent;
-				text-stroke: clamp(0.2rem, 0.2vw, 0.5rem) var(--color-accent);
-				-webkit-text-stroke: clamp(0.2rem, 0.2vw, 0.5rem) var(--color-accent);
-				z-index: 100;
-			}
-		}
-	}
+  .background {
+    background-image: url("/img/background.jpg");
+    background-size: fill;
+    background-repeat: repeat;
+    background-position: center center;
+  }
+  .foreground-wrapper {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: self-end;
+  }
+  .foreground {
+    position: absolute;
+    z-index: 2;
+  }
+  .vincent {
+    width: 70ch;
+    z-index: 1;
+  }
+  .header {
+    height: 100vh;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    top: clamp(10rem, 15vh, 15rem);
+    .overlap {
+      h1 {
+        color: var(--color-accent);
+        font-size: clamp(5rem, 21vw, 21rem);
+        position: absolute;
+      }
+      :last-child {
+        color: transparent;
+        text-stroke: clamp(0.2rem, 0.2vw, 0.5rem) var(--color-accent);
+        -webkit-text-stroke: clamp(0.2rem, 0.2vw, 0.5rem) var(--color-accent);
+        z-index: 100;
+      }
+    }
+  }
 </style>
