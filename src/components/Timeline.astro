@@ -44,7 +44,23 @@
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			justify-content: space-evenly;
+			justify-content: space-between;
+		}
+
+		button {
+			width: 2rem;
+			height: 2rem;
+			animation: scaleDownMobile 1s ease 1 forwards;
+			@media only screen and (min-width: media.$media-phone) {
+				animation-name: scaleDownDesktop;
+			}
+			animation-fill-mode: forwards;
+		}
+		.selected {
+			animation: scaleUpMobile 1s ease 1 forwards;
+			@media only screen and (min-width: media.$media-phone) {
+				animation-name: scaleUpDesktop;
+			}
 		}
 		@media only screen and (min-width: media.$media-phone) {
 			grid-template-columns: auto;
@@ -55,22 +71,46 @@
 					height: max-content;
 					width: 100%;
 				}
-				width: 100%;
 				height: 20vh;
-				display: flex;
 				flex-direction: row;
-				align-items: center;
 				justify-content: space-evenly;
 			}
 		}
 	}
 
-	.selected {
-		width: 4rem;
-		height: 4rem;
-		@media only screen and (min-width: media.$media-phone) {
-			width: 10rem;
-			height: 10rem;
+	@-webkit-keyframes scaleUpDesktop {
+		from {
+			transform: scale(1);
+		}
+		to {
+			transform: scale(5);
+		}
+	}
+
+	@-webkit-keyframes scaleDownDesktop {
+		from {
+			transform: scale(5);
+		}
+		to {
+			transform: scale(1);
+		}
+	}
+
+	@-webkit-keyframes scaleUpMobile {
+		from {
+			transform: scale(1);
+		}
+		to {
+			transform: scale(2);
+		}
+	}
+
+	@-webkit-keyframes scaleDownMobile {
+		from {
+			transform: scale(2);
+		}
+		to {
+			transform: scale(1);
 		}
 	}
 </style>
