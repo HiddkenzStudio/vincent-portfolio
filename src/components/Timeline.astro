@@ -1,12 +1,16 @@
+---
+const covers: Record<string, string>[] = await Astro.glob(
+	"../../public/img/timeline/*.jpg"
+);
+---
+
 <section>
 	<div class="selector">
-		<button
-			class="selected"
-			style={"background-image: url('/img/vincent.png');"}></button>
-		<button style={"background-image: url('/img/vincent.png');"}></button>
-		<button style={"background-image: url('/img/vincent.png');"}></button>
-		<button style={"background-image: url('/img/vincent.png');"}></button>
-		<button style={"background-image: url('/img/vincent.png');"}></button>
+		{
+			covers.map((cover, i: number) => {
+				return <button style={`background-image: url(${cover.default});`} />;
+			})
+		}
 		<div class="line"></div>
 	</div>
 	<div class="information">
