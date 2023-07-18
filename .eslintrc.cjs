@@ -48,6 +48,7 @@ module.exports = {
 				// If you are using "prettier/prettier" rule,
 				// you don't need to format inside <script> as it will be formatted as a `.astro` file.
 				"prettier/prettier": "off",
+				"no-undef": "off",
 			},
 		},
 	],

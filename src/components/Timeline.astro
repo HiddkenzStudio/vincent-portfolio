@@ -38,7 +38,8 @@ const covers: Record<string, string>[] = await Astro.glob(
 <script>
 	import TimelineContent from "../classes/TimelineContent";
 
-	const buttons = document.querySelectorAll(".btn-selector");
+	const buttons: NodeListOf<HTMLButtonElement> =
+		document.querySelectorAll(".btn-selector");
 	const informationHeader: Element | null =
 		document.querySelector(".information h3");
 	const informationParagraph: Element | null =
@@ -52,9 +53,9 @@ const covers: Record<string, string>[] = await Astro.glob(
 
 	const createContent = function (index: number) {
 		informationHeader &&
-			(informationHeader.textContent = timelines[index].title);
+			(informationHeader.textContent = timelines[index]?.title);
 		informationParagraph &&
-			(informationParagraph.textContent = timelines[index].body);
+			(informationParagraph.textContent = timelines[index]?.body);
 	};
 
 	// Init content with first one
@@ -62,13 +63,13 @@ const covers: Record<string, string>[] = await Astro.glob(
 
 	buttons.forEach((button: HTMLButtonElement, i: number) => {
 		// More accessibility baybay
-		button.title = `Period between ${timelines[i - 1]?.title}`;
+		button.title = `Period between ${timelines[i]?.title}`;
 
 		button.addEventListener("click", () => {
 			buttons.forEach((other) => other.classList.remove("selected"));
 			button.classList.add("selected");
 
-			createContent(i - 1);
+			createContent(i);
 		});
 	});
 </script>
