@@ -11,12 +11,18 @@ const covers: Record<string, string>[] = await Astro.glob(
 				if (i === 0) {
 					return (
 						<button
+							aria-label="select-period"
 							class="selected"
 							style={`background-image: url(${cover.default});`}
 						/>
 					);
 				} else {
-					return <button style={`background-image: url(${cover.default});`} />;
+					return (
+						<button
+							aria-label="select-period"
+							style={`background-image: url(${cover.default});`}
+						/>
+					);
 				}
 			})
 		}
@@ -37,9 +43,9 @@ const covers: Record<string, string>[] = await Astro.glob(
 		document.querySelector(".information p");
 
 	const timelines = [
-		new TimelineContent("1998", "Lorem ipsum hambizo"),
-		new TimelineContent("1971", "Lorem ipsum hambizo"),
-		new TimelineContent("1929", "Lorem ipsum hambizo"),
+		new TimelineContent("1887 - 1890", "Lorem ipsum hambizo"),
+		new TimelineContent("1911 - 1914", "Lorem ipsum hambizo"),
+		new TimelineContent("1914 - 1920", "Lorem ipsum hambizo"),
 	];
 
 	informationHeader && (informationHeader.textContent = timelines[0].title);
@@ -47,6 +53,7 @@ const covers: Record<string, string>[] = await Astro.glob(
 		(informationParagraph.textContent = timelines[0].body);
 
 	buttons.forEach((button: HTMLButtonElement, i: number) => {
+		button.title = `Period between ${timelines[i].title}`;
 		button.addEventListener("click", () => {
 			buttons.forEach((other) => other.classList.remove("selected"));
 			button.classList.add("selected");

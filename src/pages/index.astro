@@ -16,7 +16,7 @@ const paintings = await Astro.glob("./paintings/*.md");
 				width="100%"
 				height="auto"
 				src="/img/foreground.png"
-				alt=""
+				alt="Background consisting of random brush strokes looking like waves"
 			/>
 			<div class="header">
 				<h1>HELLO MY NAME IS</h1>
@@ -25,14 +25,19 @@ const paintings = await Astro.glob("./paintings/*.md");
 					<h1>VINCENT</h1>
 				</div>
 			</div>
-			<img class="vincent" height="auto" src="/img/vincent.png" alt="" />
+			<img
+				class="vincent"
+				height="auto"
+				src="/img/vincent.png"
+				alt="Picture of me (Vincent Van Gogh) wearing a white t-shirt"
+			/>
 		</div>
 		<img
 			class="background"
 			width="100%"
 			height="auto"
 			src="/img/lower-foreground.png"
-			alt=""
+			alt="Foreground of a small forest with a large tree visible on the left side of the window with some bushes at the end of the window"
 		/>
 	</section>
 
@@ -50,6 +55,7 @@ const paintings = await Astro.glob("./paintings/*.md");
 						description={painting.frontmatter.description}
 						date={painting.frontmatter.date}
 						painting={painting.frontmatter.painting}
+						paintingAlt={painting.frontmatter.paintingAlt}
 					/>
 				);
 			})

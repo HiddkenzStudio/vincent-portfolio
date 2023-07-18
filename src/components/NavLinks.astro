@@ -1,14 +1,14 @@
-<div>
+<ul>
 	<li><a href="/">V.</a></li>
 	<li><a href="/">Gallery</a></li>
 	<li><a href="/">About</a></li>
 	<li><a href="/">Contact</a></li>
-</div>
+</ul>
 
 <style lang="scss">
 	@use "@styles/variables.scss" as media;
 
-	div {
+	ul {
 		width: 100%;
 		@media only screen and (min-width: media.$media-phone) {
 			display: flex;
@@ -23,7 +23,7 @@
 		}
 	}
 
-	div > li:not(:first-child) {
+	ul > li:not(:first-child) {
 		display: none;
 		@media only screen and (min-width: media.$media-phone) {
 			display: flex;

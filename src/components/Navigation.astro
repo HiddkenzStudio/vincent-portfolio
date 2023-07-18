@@ -4,17 +4,17 @@ import NavLinks from "./NavLinks.astro";
 
 <header>
 	<nav>
-		<ul>
+		<div>
 			<NavLinks />
-			<li class="hamburger">
+			<div class="hamburger">
 				<button id="btn-hamburger">
 					<img
 						src="/svg/hamburger.svg"
 						alt="Hamburger menu for navigation links on mobile"
 					/>
 				</button>
-			</li>
-		</ul>
+			</div>
+		</div>
 	</nav>
 </header>
 
@@ -27,7 +27,7 @@ import NavLinks from "./NavLinks.astro";
 		width: 100vw;
 		position: fixed;
 		z-index: 100;
-		& ul {
+		& div {
 			padding-inline: 20vw;
 			width: 100vw;
 			display: flex;
@@ -35,7 +35,6 @@ import NavLinks from "./NavLinks.astro";
 		}
 		.hamburger {
 			display: flex;
-			list-style: none;
 			& a {
 				text-decoration: none;
 			}
