@@ -22,14 +22,13 @@ import NavLinks from "./NavLinks.astro";
 	@use "@styles/variables.scss" as media;
 
 	nav {
+		padding-inline: 15vw;
 		background-color: var(--color-dominant);
 		mix-blend-mode: hard-light;
 		width: 100vw;
 		position: fixed;
 		z-index: 100;
 		& div {
-			padding-inline: 20vw;
-			width: 100vw;
 			display: flex;
 			justify-content: space-around;
 		}

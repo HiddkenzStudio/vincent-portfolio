@@ -12,7 +12,7 @@ const covers: Record<string, string>[] = await Astro.glob(
 					return (
 						<button
 							aria-label="select-period"
-							class="selected"
+							class="btn-selector selected"
 							style={`background-image: url(${cover.default});`}
 						/>
 					);
@@ -20,6 +20,7 @@ const covers: Record<string, string>[] = await Astro.glob(
 					return (
 						<button
 							aria-label="select-period"
+							class="btn-selector"
 							style={`background-image: url(${cover.default});`}
 						/>
 					);
@@ -36,7 +37,8 @@ const covers: Record<string, string>[] = await Astro.glob(
 
 <script>
 	import TimelineContent from "../classes/TimelineContent";
-	const buttons = document.querySelectorAll("button");
+
+	const buttons = document.querySelectorAll(".btn-selector");
 	const informationHeader: Element | null =
 		document.querySelector(".information h3");
 	const informationParagraph: Element | null =
@@ -48,20 +50,25 @@ const covers: Record<string, string>[] = await Astro.glob(
 		new TimelineContent("1914 - 1920", "Lorem ipsum hambizo"),
 	];
 
-	informationHeader && (informationHeader.textContent = timelines[0].title);
-	informationParagraph &&
-		(informationParagraph.textContent = timelines[0].body);
+	const createContent = function (index: number) {
+		informationHeader &&
+			(informationHeader.textContent = timelines[index].title);
+		informationParagraph &&
+			(informationParagraph.textContent = timelines[index].body);
+	};
+
+	// Init content with first one
+	createContent(0);
 
 	buttons.forEach((button: HTMLButtonElement, i: number) => {
-		button.title = `Period between ${timelines[i].title}`;
+		// More accessibility baybay
+		button.title = `Period between ${timelines[i - 1]?.title}`;
+
 		button.addEventListener("click", () => {
 			buttons.forEach((other) => other.classList.remove("selected"));
 			button.classList.add("selected");
 
-			informationHeader &&
-				(informationHeader.textContent = timelines[i - 1].title);
-			informationParagraph &&
-				(informationParagraph.textContent = timelines[i - 1].body);
+			createContent(i - 1);
 		});
 	});
 </script>
@@ -86,7 +93,7 @@ const covers: Record<string, string>[] = await Astro.glob(
 			justify-content: space-between;
 		}
 
-		button {
+		.btn-selector {
 			z-index: 1;
 			width: 2rem;
 			height: 2rem;
@@ -99,12 +106,14 @@ const covers: Record<string, string>[] = await Astro.glob(
 			}
 			animation-fill-mode: forwards;
 		}
+
 		.selected {
 			animation: scaleUpMobile 1s ease 1 forwards;
 			@media only screen and (min-width: media.$media-phone) {
 				animation-name: scaleUpDesktop;
 			}
 		}
+
 		@media only screen and (min-width: media.$media-phone) {
 			grid-template-columns: auto;
 			grid-auto-rows: auto auto;
