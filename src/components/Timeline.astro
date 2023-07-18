@@ -1,10 +1,12 @@
 <section>
 	<div class="selector">
-		<button class="selected">Hello</button>
-		<button>Hello</button>
-		<button>Hello</button>
-		<button>Hello</button>
-		<button>Hello</button>
+		<button
+			class="selected"
+			style={"background-image: url('/img/vincent.png');"}></button>
+		<button style={"background-image: url('/img/vincent.png');"}></button>
+		<button style={"background-image: url('/img/vincent.png');"}></button>
+		<button style={"background-image: url('/img/vincent.png');"}></button>
+		<button style={"background-image: url('/img/vincent.png');"}></button>
 		<div class="line"></div>
 	</div>
 	<div class="information">
@@ -48,8 +50,12 @@
 		}
 
 		button {
+			z-index: 1;
 			width: 2rem;
 			height: 2rem;
+			border-radius: 50%;
+			border: none;
+			background: url("") no-repeat center center / cover;
 			animation: scaleDownMobile 1s ease 1 forwards;
 			@media only screen and (min-width: media.$media-phone) {
 				animation-name: scaleDownDesktop;
