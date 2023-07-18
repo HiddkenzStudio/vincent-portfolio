@@ -8,27 +8,53 @@ const covers: Record<string, string>[] = await Astro.glob(
 	<div class="selector">
 		{
 			covers.map((cover, i: number) => {
-				return <button style={`background-image: url(${cover.default});`} />;
+				if (i === 0) {
+					return (
+						<button
+							class="selected"
+							style={`background-image: url(${cover.default});`}
+						/>
+					);
+				} else {
+					return <button style={`background-image: url(${cover.default});`} />;
+				}
 			})
 		}
 		<div class="line"></div>
 	</div>
 	<div class="information">
+		<h3>Title</h3>
 		<p>My Name is Vincent</p>
 	</div>
 </section>
 
 <script>
+	import TimelineContent from "../classes/TimelineContent";
 	const buttons = document.querySelectorAll("button");
-	const information: Element | null = document.querySelector(".information p");
+	const informationHeader: Element | null =
+		document.querySelector(".information h3");
+	const informationParagraph: Element | null =
+		document.querySelector(".information p");
+
+	const timelines = [
+		new TimelineContent("1998", "Lorem ipsum hambizo"),
+		new TimelineContent("1971", "Lorem ipsum hambizo"),
+		new TimelineContent("1929", "Lorem ipsum hambizo"),
+	];
+
+	informationHeader && (informationHeader.textContent = timelines[0].title);
+	informationParagraph &&
+		(informationParagraph.textContent = timelines[0].body);
 
 	buttons.forEach((button: HTMLButtonElement, i: number) => {
 		button.addEventListener("click", () => {
 			buttons.forEach((other) => other.classList.remove("selected"));
 			button.classList.add("selected");
 
-			console.log(i);
-			information && (information.textContent = "Hello");
+			informationHeader &&
+				(informationHeader.textContent = timelines[i - 1].title);
+			informationParagraph &&
+				(informationParagraph.textContent = timelines[i - 1].body);
 		});
 	});
 </script>
