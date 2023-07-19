@@ -2,6 +2,7 @@
 	--color-dominant: #fefaf1;
 	--color-complementary: #254634;
 	--color-accent: #ffcb5a;
+	--color-index: #cb2121;
 }
 
 body {
@@ -24,4 +25,8 @@ h3,
 p,
 blockquote {
 	color: var(--color-complementary);
+}
+
+.selector ul li {
+	color: var(--color-index);
 }

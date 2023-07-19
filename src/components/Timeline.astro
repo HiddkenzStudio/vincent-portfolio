@@ -56,7 +56,7 @@ const covers: Record<string, string>[] = await Astro.glob(
 	const timelines = [
 		new TimelineContent(
 			"Zundert, 1853 - 1873.",
-			"I was born on March 30, 1853, in the picturesque village of Groot-Zundert in the Netherlands. Even as a young child, I possessed an intense passion for art and a profound connection to the natural world. <br><br> Being the eldest of six siblings, I grew up in a nurturing environment where my parents, Theodorus van Gogh and Anna Cornelia Carbentus, recognized and supported my artistic inclinations. During my early years, I found immense joy in sketching and drawing, often losing myself in the beauty of the landscapes and objects that surrounded me. These formative experiences laid the foundation for my lifelong artistic journey."
+			"From the moment I drew my first breath in 1853, my journey as Vincent van Gogh began to unfold. Growing up in the serene town of Groot-Zundert, Netherlands, I was captivated by the wonders of nature that surrounded me. The vibrant colors of blooming flowers and the interplay of sunlight on the landscapes sparked an insatiable curiosity within my young heart. As I grew older, my passion for art bloomed alongside me, and I found solace in sketching and observing the world around me. These early years laid the foundation for my artistic spirit, nurturing a love for beauty that would guide me into the next chapter of my life. <br><br> Being the eldest of six siblings, I grew up in a nurturing environment where my parents, Theodorus van Gogh and Anna Cornelia Carbentus, recognized and supported my artistic inclinations. During my early years, I found immense joy in sketching and drawing, often losing myself in the beauty of the landscapes and objects that surrounded me. These formative experiences laid the foundation for my lifelong artistic journey."
 		),
 		new TimelineContent(
 			"Self-discovery, 1873 - 1883.",
@@ -122,7 +122,6 @@ const covers: Record<string, string>[] = await Astro.glob(
 					li {
 						transform: rotateZ(-90deg);
 						list-style-type: none;
-						// font-size: 0.78rem;
 						font-size: clamp(0.7rem, 0.85vw, 0.9em);
 					}
 				}
@@ -136,6 +135,7 @@ const covers: Record<string, string>[] = await Astro.glob(
 		}
 
 		.btn-selector {
+			transition: all 0.75s ease;
 			z-index: 1;
 			width: 3rem;
 			height: 3rem;
@@ -143,11 +143,24 @@ const covers: Record<string, string>[] = await Astro.glob(
 			border: none;
 			background: url("") no-repeat center center / cover;
 			border: 0.1rem solid var(--color-dominant);
-			animation: scaleDownMobile 1s ease 1 forwards;
+			animation: scaleDownMobile 1s ease 1;
 			@media only screen and (min-width: media.$media-phone) {
 				animation-name: scaleDownDesktop;
 			}
 			animation-fill-mode: forwards;
+
+			&::before {
+				scale: 1;
+			}
+
+			&:hover {
+				scale: 1.35;
+				transition: all 0.75s ease;
+			}
+
+			&:hover::before {
+				scale: 1;
+			}
 		}
 
 		.selected {
@@ -155,6 +168,10 @@ const covers: Record<string, string>[] = await Astro.glob(
 			@media only screen and (min-width: media.$media-phone) {
 				animation-name: scaleUpDesktop;
 			}
+		}
+
+		.selected:hover {
+			scale: initial;
 		}
 
 		@media only screen and (min-width: media.$media-phone) {
@@ -225,8 +242,8 @@ const covers: Record<string, string>[] = await Astro.glob(
 		from {
 			transform: scale(1.25);
 		}
+		transform: scale(1);
 		to {
-			transform: scale(1);
 		}
 	}
 </style>
