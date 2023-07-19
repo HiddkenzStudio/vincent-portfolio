@@ -108,20 +108,22 @@ const covers: Record<string, string>[] = await Astro.glob(
 		grid-template-columns: 20% auto;
 		.selector {
 			.line {
-				border-left: 0.2rem solid var(--color-complementary);
-				height: inherit;
+				border-left: var(--border-width) solid var(--color-complementary);
+				height: 132vh;
 				position: absolute;
+				z-index: -1;
 				ul {
 					position: absolute;
 					padding-block: 7rem;
 					height: 100%;
 					display: flex;
 					flex-direction: column;
-					justify-content: space-between;
+					justify-content: space-evenly;
 					li {
 						transform: rotateZ(-90deg);
 						list-style-type: none;
-						font-size: 0.85rem;
+						// font-size: 0.78rem;
+						font-size: clamp(0.7rem, 0.85vw, 0.9em);
 					}
 				}
 			}
@@ -130,7 +132,7 @@ const covers: Record<string, string>[] = await Astro.glob(
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			justify-content: space-between;
+			justify-content: space-evenly;
 		}
 
 		.btn-selector {
