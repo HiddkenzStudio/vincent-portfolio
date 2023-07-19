@@ -29,11 +29,11 @@ const covers: Record<string, string>[] = await Astro.glob(
 		}
 		<div class="line">
 			<ul>
-				<li>1800</li>
-				<li>1800</li>
-				<li>1800</li>
-				<li>1800</li>
-				<li>1800</li>
+				<li>1853</li>
+				<li>1873</li>
+				<li>1883</li>
+				<li>1889</li>
+				<li>. . .</li>
 			</ul>
 		</div>
 	</div>
@@ -54,17 +54,33 @@ const covers: Record<string, string>[] = await Astro.glob(
 		document.querySelector(".information p");
 
 	const timelines = [
-		new TimelineContent("1887 - 1890", "Lorem ipsum hambizo"),
-		new TimelineContent("1911 - 1914", "Lorem ipsum hambizo"),
-		new TimelineContent("1914 - 1920", "Lorem ipsum hambizo"),
-		new TimelineContent("1914 - 1920", "Lorem ipsum hambizo"),
+		new TimelineContent(
+			"Zundert, 1853 - 1873",
+			"I was born on March 30, 1853, in the picturesque village of Groot-Zundert in the Netherlands. Even as a young child, I possessed an intense passion for art and a profound connection to the natural world. <br><br> Being the eldest of six siblings, I grew up in a nurturing environment where my parents, Theodorus van Gogh and Anna Cornelia Carbentus, recognized and supported my artistic inclinations. During my early years, I found immense joy in sketching and drawing, often losing myself in the beauty of the landscapes and objects that surrounded me. These formative experiences laid the foundation for my lifelong artistic journey."
+		),
+		new TimelineContent(
+			"Self-discovery, 1873 - 1883",
+			"In the following years, I experienced a profound transformation in my life and discovered my true passion for art. It was during this time that I embarked on a journey of self-discovery, exploring various artistic styles and techniques. I found solace and purpose in painting, and it became my primary means of expression.<br><br> Throughout this period, I faced numerous challenges and setbacks, both personally and professionally. However, I was fortunate to have the unwavering support and belief of my beloved brother, Theo. His encouragement, both emotionally and financially, allowed me to pursue my artistic aspirations with greater fervor. Theo's faith in my talent served as a constant source of motivation, providing me with the strength to overcome obstacles and continue my artistic pursuit. The bond we shared was instrumental in shaping my artistic identity and played a vital role in my artistic development during these formative years."
+		),
+		new TimelineContent(
+			"Far From Home, 1883 - 1889",
+			"From 1883 to 1889, my life was marked by a restless exploration of different places and countries. In 1883, I moved to the Netherlands' rural province of Drenthe, seeking inspiration from its serene landscapes. Later, I ventured to the vibrant city of Antwerp in Belgium, where I studied at the Royal Academy of Fine Arts.<br><br> Seeking new artistic perspectives, I then traveled to Paris, France, immersing myself in the thriving art scene and encountering fellow artists like Paul Gauguin and Henri de Toulouse-Lautrec. The allure of the countryside led me to Arles in the south of France, where I experienced a burst of creativity, capturing the vibrant colors and atmospheric beauty of the region.<br><br>My desire to establish an artist's community brought me to the picturesque village of Saint-Rémy-de-Provence, where I sought solace and inspiration amidst the tranquil surroundings. Throughout this period, my travels exposed me to diverse cultures and landscapes, influencing my artistic style and subject matter, ultimately shaping the legacy I would leave behind."
+		),
+		new TimelineContent(
+			"Hospitalization, 1889 - 1890",
+			"My experiences in hospitals were pivotal and transformative. Following a series of mental health struggles, I voluntarily admitted myself to the Saint-Paul-de-Mausole asylum in Saint-Rémy-de-Provence in 1889. The hospital provided a structured and supportive environment that allowed me to focus on my art.<br><br>Despite the challenges I faced, I found solace and a renewed sense of purpose within those walls. Through painting, I channeled my emotions and expressed the depths of my inner world. The hospital became a sanctuary where I could explore new artistic techniques and experiment with vibrant colors.<br><br>The paintings created during my time in the hospital, including `The Starry Night' have become some of my most celebrated works, capturing the essence of my unique artistic vision. These experiences in the hospital not only shaped my artistic legacy but also demonstrated the power of art as a therapeutic outlet for emotional healing and self-expression."
+		),
 	];
 
 	const createContent = function (index: number) {
 		informationHeader &&
 			(informationHeader.textContent = timelines[index]?.title);
+		informationParagraph && (informationParagraph.textContent = "");
 		informationParagraph &&
-			(informationParagraph.textContent = timelines[index]?.body);
+			informationParagraph.insertAdjacentHTML(
+				"afterbegin",
+				timelines[index]?.body
+			);
 	};
 
 	// Init content with first one
@@ -110,7 +126,7 @@ const covers: Record<string, string>[] = await Astro.glob(
 				}
 			}
 			width: 100%;
-			height: 75vh;
+			height: 85vh;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -165,6 +181,12 @@ const covers: Record<string, string>[] = await Astro.glob(
 
 		.information {
 			margin-inline: var(--narrow-inline);
+			@media only screen and (min-width: media.$media-phone) {
+				margin-inline: var(--wide-inline);
+				h3 {
+					text-align: center;
+				}
+			}
 		}
 	}
 
@@ -173,13 +195,13 @@ const covers: Record<string, string>[] = await Astro.glob(
 			transform: scale(1);
 		}
 		to {
-			transform: scale(3.5);
+			transform: scale(2.5);
 		}
 	}
 
 	@-webkit-keyframes scaleDownDesktop {
 		from {
-			transform: scale(3.5);
+			transform: scale(2.5);
 		}
 		to {
 			transform: scale(1);
