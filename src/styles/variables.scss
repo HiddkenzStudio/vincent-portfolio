@@ -1,3 +1,12 @@
 $media-phone: 768px;
 $media-tablet: 1200px;
 $media-desktop: 1600px;
+
+:root {
+	// Spaces
+	--narrow-inline: 2vw;
+	--wide-inline: 20vw;
+	--block-padded: 12rem;
+	// Borders
+	--border-width: 0.15rem;
+}

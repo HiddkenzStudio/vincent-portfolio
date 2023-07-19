@@ -26,7 +26,6 @@ const { cardLayout, painting, paintingAlt, title, date, description } =
 			width: 100%;
 			aspect-ratio: 14/9;
 			border: 0.3rem solid transparent;
-			padding: 0.5rem;
 			border-image: linear-gradient(to top, var(--color-accent), #00000000) 1;
 		}
 		.content {
@@ -37,7 +36,7 @@ const { cardLayout, painting, paintingAlt, title, date, description } =
 			overflow-wrap: break-word;
 			div p {
 				padding-top: 0.5rem;
-				border-top: 0.3rem solid var(--color-complementary);
+				border-top: var(--border-width) solid var(--color-complementary);
 			}
 		}
 	}
@@ -57,7 +56,7 @@ const { cardLayout, painting, paintingAlt, title, date, description } =
 				div p {
 					border-top: none;
 					padding-left: 0.5rem;
-					border-left: 0.2rem solid var(--color-complementary);
+					border-left: var(--border-width) solid var(--color-complementary);
 				}
 			}
 			img {
