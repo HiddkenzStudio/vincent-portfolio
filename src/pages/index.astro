@@ -45,7 +45,7 @@ const paintings = await Astro.glob("./paintings/*.md");
 		body="Greetings, kindred soul. I am Vincent van Gogh, a passionate artist whose heart beats with the rhythm of colors and the essence of nature. Allow me to share a glimpse into the depths of my artistic journey and the world that dances within my brushstrokes."
 	/>
 
-	<SectionLayout id="work" title="My Work">
+	<SectionLayout id="work" title="My Work" background="/img/doodles-1.png">
 		{
 			paintings.map((painting) => {
 				return (
@@ -62,16 +62,22 @@ const paintings = await Astro.glob("./paintings/*.md");
 		}
 	</SectionLayout>
 
-	<SectionLayout id="story" title="My Story">
-		<Quote
-			body="Instead of giving way to despair, I took the way of active melancholy as long as I had strength for activity, or in other words, I preferred the melancholy that hopes and aspires and searches to the one that despairs, mournful and stagnant."
-		/>
+	<Quote
+		body="Instead of giving way to despair, I took the way of active melancholy as long as I had strength for activity, or in other words, I preferred the melancholy that hopes and aspires and searches to the one that despairs, mournful and stagnant."
+	/>
+
+	<SectionLayout id="story" title="My Story" background="/img/doodles-2.png">
 		<Timeline />
 	</SectionLayout>
 
-	<img src="/img/torn-green.png" alt="" />
+	<img class="torn" src="/img/torn-green.png" alt="" />
 
-	<SectionLayout isGreen="true" id="story" title="My Story">
+	<SectionLayout
+		isGreen="true"
+		id="story"
+		title="My Story"
+		background="/img/doodles-3.png"
+	>
 		<Quote
 			body="Ah well, I risk my life for my own work and my reason has half foundered in it. But what can you do?"
 		/>
