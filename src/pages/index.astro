@@ -62,13 +62,16 @@ const paintings = await Astro.glob("./paintings/*.md");
 		}
 	</SectionLayout>
 
-	<img src="/img/torn-green.png" alt="" />
-
-	<SectionLayout isGreen="true" id="story" title="My Story">
+	<SectionLayout id="story" title="My Story">
 		<Quote
 			body="Instead of giving way to despair, I took the way of active melancholy as long as I had strength for activity, or in other words, I preferred the melancholy that hopes and aspires and searches to the one that despairs, mournful and stagnant."
 		/>
 		<Timeline />
+	</SectionLayout>
+
+	<img src="/img/torn-green.png" alt="" />
+
+	<SectionLayout isGreen="true" id="story" title="My Story">
 		<Quote
 			body="Ah well, I risk my life for my own work and my reason has half foundered in it. But what can you do?"
 		/>
