@@ -4,7 +4,8 @@ const covers: Record<string, string>[] = await Astro.glob(
 );
 ---
 
-<section>
+<section id="timeline">
+	<span id="cursor-hint">Select a date</span>
 	<div class="selector">
 		{
 			covers.map((cover, i: number) => {
@@ -52,6 +53,20 @@ const covers: Record<string, string>[] = await Astro.glob(
 		document.querySelector(".information h3");
 	const informationParagraph: Element | null =
 		document.querySelector(".information p");
+
+	const timelineSection = document.getElementById("timeline");
+	const hint: HTMLElement | null | undefined =
+		timelineSection?.querySelector("#cursor-hint");
+
+	timelineSection?.addEventListener("mouseleave", () => {
+		hint && (hint.style.display = "none");
+	});
+
+	timelineSection?.addEventListener("mousemove", (e) => {
+		hint && (hint.style.display = "initial");
+		hint && (hint.style.left = e.pageX + 20 + "px");
+		hint && (hint.style.top = e.pageY + "px");
+	});
 
 	const timelines = [
 		new TimelineContent(
@@ -101,6 +116,15 @@ const covers: Record<string, string>[] = await Astro.glob(
 
 <style lang="scss">
 	@use "@styles/variables" as media;
+	#cursor-hint {
+		position: absolute;
+		z-index: 100;
+		cursor: default;
+		display: none;
+		@media only screen and (min-width: media.$media-phone) {
+			display: initial;
+		}
+	}
 
 	section {
 		padding-block: var(--block-padded);
