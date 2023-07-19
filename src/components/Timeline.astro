@@ -5,7 +5,7 @@ const covers: Record<string, string>[] = await Astro.glob(
 ---
 
 <section id="timeline">
-	<span id="cursor-hint">Select a date</span>
+	<span aria-hidden="true" id="cursor-hint">Select a date</span>
 	<div class="selector">
 		{
 			covers.map((cover, i: number) => {
@@ -39,6 +39,7 @@ const covers: Record<string, string>[] = await Astro.glob(
 		</div>
 	</div>
 	<div class="information">
+		<span id="mobile-hint">Select a date</span>
 		<h3>Title</h3>
 		<p>My Name is Vincent</p>
 	</div>
@@ -63,9 +64,11 @@ const covers: Record<string, string>[] = await Astro.glob(
 	});
 
 	timelineSection?.addEventListener("mousemove", (e) => {
-		hint && (hint.style.display = "initial");
-		hint && (hint.style.left = e.pageX + 20 + "px");
-		hint && (hint.style.top = e.pageY + "px");
+		if (hint) {
+			hint.style.display = "initial";
+			hint.style.left = e.pageX + 20 + "px";
+			hint.style.top = e.pageY + "px";
+		}
 	});
 
 	const timelines = [
@@ -90,12 +93,14 @@ const covers: Record<string, string>[] = await Astro.glob(
 	const createContent = function (index: number) {
 		informationHeader &&
 			(informationHeader.textContent = timelines[index]?.title);
-		informationParagraph && (informationParagraph.textContent = "");
-		informationParagraph &&
+
+		if (informationParagraph) {
+			informationParagraph.textContent = "";
 			informationParagraph.insertAdjacentHTML(
 				"afterbegin",
 				timelines[index]?.body
 			);
+		}
 	};
 
 	// Init content with first one
@@ -116,6 +121,12 @@ const covers: Record<string, string>[] = await Astro.glob(
 
 <style lang="scss">
 	@use "@styles/variables" as media;
+	#mobile-hint {
+		display: block;
+		@media only screen and (min-width: media.$media-phone) {
+			display: none;
+		}
+	}
 	#cursor-hint {
 		position: absolute;
 		z-index: 100;
