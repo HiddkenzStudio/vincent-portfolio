@@ -63,13 +63,15 @@ const covers: Record<string, string>[] = await Astro.glob(
 		hint && (hint.style.display = "none");
 	});
 
-	timelineSection?.addEventListener("mousemove", (e) => {
-		if (hint) {
-			hint.style.display = "initial";
-			hint.style.left = e.pageX + 20 + "px";
-			hint.style.top = e.pageY + "px";
-		}
-	});
+	if (window.innerWidth >= 768) {
+		timelineSection?.addEventListener("mousemove", (e) => {
+			if (hint) {
+				hint.style.display = "initial";
+				hint.style.left = e.pageX + 20 + "px";
+				hint.style.top = e.pageY + "px";
+			}
+		});
+	}
 
 	const timelines = [
 		new TimelineContent(
