@@ -22,6 +22,9 @@ import NavLinks from "./NavLinks.astro";
 	@use "@styles/variables.scss" as media;
 
 	nav {
+		opacity: 0;
+		animation: slideIn 1s ease 1 forwards;
+		animation-delay: var(--load-delay);
 		padding-inline: 15vw;
 		background-color: var(--color-dominant);
 		mix-blend-mode: hard-light;
@@ -45,6 +48,17 @@ import NavLinks from "./NavLinks.astro";
 		#btn-hamburger {
 			background-color: transparent;
 			border: none;
+		}
+	}
+
+	@-webkit-keyframes slideIn {
+		from {
+			opacity: 0;
+			transform: translateY(-3rem);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
 		}
 	}
 </style>
