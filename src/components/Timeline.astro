@@ -5,7 +5,9 @@ const covers: Record<string, string>[] = await Astro.glob(
 ---
 
 <section id="timeline">
-	<span aria-hidden="true" id="cursor-hint">Select a date</span>
+	<span aria-hidden="true" aria-live="assertive" id="cursor-hint"
+		>Select a date</span
+	>
 	<div class="selector">
 		{
 			covers.map((cover, i: number) => {
@@ -39,7 +41,11 @@ const covers: Record<string, string>[] = await Astro.glob(
 		</div>
 	</div>
 	<div class="information">
-		<span id="mobile-hint">Select a date</span>
+		<span
+			aria-hidden="false"
+			aria-details="Select a date from the date selector menu"
+			id="mobile-hint">Select a date</span
+		>
 		<h3>Title</h3>
 		<p>My Name is Vincent</p>
 	</div>
@@ -279,8 +285,8 @@ const covers: Record<string, string>[] = await Astro.glob(
 		from {
 			transform: scale(1.25);
 		}
-		transform: scale(1);
 		to {
+			transform: scale(1);
 		}
 	}
 </style>
