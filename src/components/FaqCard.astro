@@ -5,21 +5,20 @@ const { question, answer } = Astro.props;
 <div class="faqCard">
 	<div class="question">
 		<h3>{question}</h3>
-		...
+		<div class="plus-icon"></div>
 	</div>
 	<p class="answer">{answer}</p>
 </div>
 
 <style lang="scss">
 	.faqCard {
-		transition: all 1s ease;
-		margin-top: var(--block-padded);
-		margin-inline: var(--narrow-inline);
+		transition: all 0.75s ease;
 		padding: 1rem;
 		border: var(--border-width) solid var(--color-faded);
 		& .question {
 			display: flex;
 			justify-content: space-between;
+			align-items: center;
 		}
 	}
 
@@ -30,12 +29,64 @@ const { question, answer } = Astro.props;
 	.answer {
 		opacity: 0;
 		max-height: 0;
-		transition: all 1s ease;
+		transition: all 0.75s ease;
 	}
 
 	.expanded {
-		opacity: 1;
-		max-height: 100px;
-		transition: all 1s ease;
+		border: var(--border-width) solid var(--color-dominant);
+		& .answer {
+			opacity: 1;
+			max-height: 100px;
+			transition: all 1s ease;
+		}
+	}
+
+	.faqCard:hover {
+		border-color: var(--color-dominant);
+	}
+
+	.plus-icon {
+		position: relative;
+		width: 30px;
+		height: 30px;
+
+		&:before,
+		&:after {
+			content: "";
+			position: absolute;
+			background-color: var(--color-dominant);
+			transition: all 0.75s ease;
+		}
+
+		/* Vertical line */
+		&:before {
+			top: 0;
+			left: 50%;
+			width: 4px;
+			height: 100%;
+			margin-left: -2px;
+		}
+
+		/* horizontal line */
+		&:after {
+			top: 50%;
+			left: 0;
+			width: 100%;
+			height: 4px;
+			margin-top: -2px;
+		}
+	}
+
+	.plus-expanded {
+		&:before,
+		&:after {
+			background-color: var(--color-accent);
+		}
+		&:before {
+			transform: rotate(90deg);
+		}
+		&:after {
+			transform: rotate(180deg);
+		}
 	}
 </style>

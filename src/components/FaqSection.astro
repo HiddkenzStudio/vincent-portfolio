@@ -10,9 +10,12 @@ import Quote from "./Quote.astro";
 	title="Ask Me"
 	background="/img/doodles-3.png"
 >
-	<FaqCard question="Are you still alive?" answer="No dummy" />
-	<FaqCard question="Are you still alive?" answer="No dummy" />
-	<FaqCard question="Are you still alive?" answer="No dummy" />
+	<div>
+		<FaqCard question="Are you still alive?" answer="No dummy" />
+		<FaqCard question="Are you still alive?" answer="No dummy" />
+		<FaqCard question="Are you still alive?" answer="No dummy" />
+	</div>
+
 	<Quote
 		body="Ah well, I risk my life for my own work and my reason has half foundered in it. But what can you do?"
 	/>
@@ -23,9 +26,23 @@ import Quote from "./Quote.astro";
 	cards.forEach((card) => {
 		let expanded = false;
 		const answer: HTMLElement | null = card?.querySelector(".answer");
+		const arrow: HTMLElement | null = card?.querySelector(".plus-icon");
 		card.addEventListener("click", () => {
 			expanded = !expanded;
-			answer?.classList.toggle("expanded");
+			card?.classList.toggle("expanded");
+			arrow?.classList.toggle("plus-expanded");
 		});
 	});
 </script>
+
+<style>
+	* {
+		margin-top: var(--block-padded);
+		margin-inline: var(--narrow-inline);
+	}
+	div {
+		display: flex;
+		gap: var(--items-padded);
+		flex-direction: column;
+	}
+</style>
