@@ -1,0 +1,35 @@
+---
+import FaqCard from "@components/FaqCard.astro";
+import SectionLayout from "@layouts/SectionLayout.astro";
+import Quote from "./Quote.astro";
+---
+
+<SectionLayout
+	isGreen="true"
+	id="faq"
+	title="Ask Me"
+	background="/img/doodles-3.png"
+>
+	<FaqCard question="Are you still alive?" answer="No dummy" />
+	<FaqCard question="Are you still alive?" answer="No dummy" />
+	<FaqCard question="Are you still alive?" answer="No dummy" />
+	<Quote
+		body="Ah well, I risk my life for my own work and my reason has half foundered in it. But what can you do?"
+	/>
+</SectionLayout>
+
+<script>
+	const cards = document.querySelectorAll(".faqCard");
+	cards.forEach((card) => {
+		let expanded = false;
+		card.addEventListener("click", () => {
+			expanded = !expanded;
+			const answer: HTMLElement | null = card?.querySelector(".answer");
+
+			answer &&
+				(expanded
+					? (answer.style.display = "block")
+					: (answer.style.display = "none"));
+		});
+	});
+</script>

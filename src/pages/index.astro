@@ -4,6 +4,7 @@ import Quote from "@components/Quote.astro";
 import SectionLayout from "@layouts/SectionLayout.astro";
 import Painting from "@components/Painting.astro";
 import Timeline from "@components/Timeline.astro";
+import FaqSection from "@components/FaqSection.astro";
 
 const paintings = await Astro.glob("./paintings/*.md");
 ---
@@ -72,16 +73,7 @@ const paintings = await Astro.glob("./paintings/*.md");
 
 	<img class="torn" src="/img/torn-green.png" alt="" />
 
-	<SectionLayout
-		isGreen="true"
-		id="story"
-		title="Ask Me"
-		background="/img/doodles-3.png"
-	>
-		<Quote
-			body="Ah well, I risk my life for my own work and my reason has half foundered in it. But what can you do?"
-		/>
-	</SectionLayout>
+	<FaqSection />
 </BaseLayout>
 
 <style lang="scss">

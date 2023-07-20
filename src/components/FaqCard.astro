@@ -1,0 +1,32 @@
+---
+const { question, answer } = Astro.props;
+---
+
+<div class="faqCard">
+	<div class="question">
+		<h3>{question}</h3>
+		...
+	</div>
+	<p class="answer">{answer}</p>
+</div>
+
+<style lang="scss">
+	.faqCard {
+		margin-top: var(--block-padded);
+		margin-inline: var(--narrow-inline);
+		padding: 1rem;
+		border: var(--border-width) solid var(--color-faded);
+		& .question {
+			display: flex;
+			justify-content: space-between;
+		}
+	}
+
+	h3 {
+		font-family: var(--font-title);
+	}
+
+	.answer {
+		display: none;
+	}
+</style>

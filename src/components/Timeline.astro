@@ -44,7 +44,9 @@ const covers: Record<string, string>[] = await Astro.glob(
 		<span
 			aria-hidden="false"
 			aria-details="Select a date from the date selector menu"
-			id="mobile-hint">Select a date</span
+			id="mobile-hint"
+		>
+			Select a date</span
 		>
 		<h3>Title</h3>
 		<p>My Name is Vincent</p>
@@ -65,9 +67,10 @@ const covers: Record<string, string>[] = await Astro.glob(
 	const hint: HTMLElement | null | undefined =
 		timelineSection?.querySelector("#cursor-hint");
 
-	timelineSection?.addEventListener("mouseleave", () => {
-		hint && (hint.style.display = "none");
-	});
+	timelineSection?.addEventListener(
+		"mouseleave",
+		() => hint && (hint.style.display = "none")
+	);
 
 	if (window.innerWidth >= 768) {
 		timelineSection?.addEventListener("mousemove", (e) => {
@@ -78,6 +81,17 @@ const covers: Record<string, string>[] = await Astro.glob(
 			}
 		});
 	}
+
+	// Hide hint when mouse is over a paragaraph
+	informationParagraph?.addEventListener(
+		"mousemove",
+		() => hint && (hint.style.mixBlendMode = "exclusion")
+	);
+
+	informationParagraph?.addEventListener(
+		"mouseleave",
+		() => hint && (hint.style.mixBlendMode = "normal")
+	);
 
 	const timelines = [
 		new TimelineContent(
