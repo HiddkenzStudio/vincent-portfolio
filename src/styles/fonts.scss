@@ -11,6 +11,7 @@
 }
 
 h1 {
+	cursor: default;
 	line-height: 100%;
 	font-size: clamp(2rem, 9.5vw, 9.5rem);
 	white-space: nowrap;
@@ -27,6 +28,7 @@ h3 {
 	font-family: var(--font-quote);
 	font-size: clamp(1.5rem, 3vw, 2rem);
 }
+
 h4 {
 	font-family: var(--font-quote);
 	font-size: 1.2rem;

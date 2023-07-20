@@ -11,9 +11,26 @@ import Quote from "./Quote.astro";
 	background="/img/doodles-3.png"
 >
 	<div>
-		<FaqCard question="Are you still alive?" answer="No dummy" />
-		<FaqCard question="Are you still alive?" answer="No dummy" />
-		<FaqCard question="Are you still alive?" answer="No dummy" />
+		<FaqCard
+			question="How do you describe your art?"
+			answer="My art is a passionate and emotive expression of the world around me and the depth of human experience. With bold and vibrant colors, I capture the beauty of nature, the swirling cosmos, and the fragility of the human mind. "
+		/>
+		<FaqCard
+			question="Why did you paint alot of self-portraits?"
+			answer="I painted countless self-portraits not out of vanity but as a means of self-exploration and catharsis. Each brushstroke allowed me to delve into my emotions, confronting the inner turmoil I faced. Solitude in my studio enabled me to gaze at my own reflection, seeking to understand the complexities of my mind. "
+		/>
+		<FaqCard
+			question="What significance do colors hold for you in your work?"
+			answer="Colors hold the power to convey emotions and reflect the soul's intensity in my work, allowing me to paint the essence of life and evoke emotions in those who encounter my art."
+		/>
+		<FaqCard
+			question="Are you still alive?"
+			answer="No dummy! I died like a 100 years. This is just a website made by a crazy guy who thought the real Vincent Van Gogh needed a portfolio website for people to know him."
+		/>
+		<FaqCard
+			question="How would you approach capturing the beauty of modern landscapes?"
+			answer="With bold and vibrant colors, I would paint the ever-changing beauty of modern landscapes, embracing urban scenes and technological marvels while finding solace in nature, all to evoke emotions and connect with the souls of those who encounter my art."
+		/>
 	</div>
 
 	<Quote
@@ -25,7 +42,6 @@ import Quote from "./Quote.astro";
 	const cards = document.querySelectorAll(".faqCard");
 	cards.forEach((card) => {
 		let expanded = false;
-		const answer: HTMLElement | null = card?.querySelector(".answer");
 		const arrow: HTMLElement | null = card?.querySelector(".plus-icon");
 		card.addEventListener("click", () => {
 			expanded = !expanded;
