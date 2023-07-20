@@ -26,7 +26,12 @@ const { isGreen = "false", id, title, background } = Astro.props;
 				z-index: 101;
 			}
 			& img {
+				perspective: 2000px;
+				transition: all 1s ease; /* Add a smooth transition effect */
 				z-index: 100;
+			}
+			&:hover img {
+				transform: rotateY(10deg) skewY(-2deg);
 			}
 		}
 	}
