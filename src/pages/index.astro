@@ -72,7 +72,11 @@ const paintings = await Astro.glob("./paintings/*.md");
 		<Timeline />
 	</SectionLayout>
 
-	<img class="torn" src="/img/torn-green.png" alt="" />
+	<img
+		style="position: relative; z-index: 3;"
+		src="/img/torn-green.png"
+		alt=""
+	/>
 
 	<FaqSection />
 </BaseLayout>

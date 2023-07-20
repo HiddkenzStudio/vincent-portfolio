@@ -23,6 +23,10 @@ const { isGreen = "false", id, title, background } = Astro.props;
 			& h2 {
 				position: absolute;
 				width: 100%;
+				z-index: 101;
+			}
+			& img {
+				z-index: 100;
 			}
 		}
 	}

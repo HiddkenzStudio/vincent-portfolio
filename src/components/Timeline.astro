@@ -5,6 +5,7 @@ const covers: Record<string, string>[] = await Astro.glob(
 ---
 
 <section id="timeline">
+	<div class="slideshower"></div>
 	<span aria-hidden="true" aria-live="assertive" id="cursor-hint"
 		>Select a date</span
 	>
@@ -63,7 +64,11 @@ const covers: Record<string, string>[] = await Astro.glob(
 	const informationParagraph: HTMLElement | null =
 		document.querySelector(".information p");
 
+	const slideshower: HTMLElement | null =
+		document.querySelector(".slideshower");
+
 	const timelineSection = document.getElementById("timeline");
+
 	const hint: HTMLElement | null | undefined =
 		timelineSection?.querySelector("#cursor-hint");
 
@@ -133,10 +138,18 @@ const covers: Record<string, string>[] = await Astro.glob(
 		button.title = `Period between ${timelines[i]?.title}`;
 
 		button.addEventListener("click", () => {
+			slideshower && slideshower.classList.remove("slideshower--slide");
 			buttons.forEach((other) => other.classList.remove("selected"));
 			button.classList.add("selected");
 
-			createContent(i);
+			slideshower && slideshower.classList.add("slideshower--slide");
+
+			setTimeout(() => {
+				createContent(i);
+			}, 200);
+			setTimeout(() => {
+				slideshower && slideshower.classList.remove("slideshower--slide");
+			}, 1000);
 		});
 	});
 </script>
@@ -164,11 +177,12 @@ const covers: Record<string, string>[] = await Astro.glob(
 		display: grid;
 		grid-template-columns: 20% auto;
 		.selector {
+			z-index: 3;
 			.line {
 				border-left: var(--border-width) solid var(--color-complementary);
 				height: 132vh;
 				position: absolute;
-				z-index: -1;
+				z-index: 0;
 				ul {
 					position: absolute;
 					padding-block: 7rem;
@@ -255,6 +269,20 @@ const covers: Record<string, string>[] = await Astro.glob(
 			}
 		}
 
+		.slideshower {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background-color: var(--color-dominant);
+			opacity: 0;
+			transform: translateY(-1000px);
+			z-index: 1;
+		}
+
+		.slideshower--slide {
+			animation: fadeInOut 1s ease forwards;
+		}
+
 		.information {
 			margin-inline: var(--narrow-inline);
 			height: 35vh;
@@ -301,6 +329,23 @@ const covers: Record<string, string>[] = await Astro.glob(
 		}
 		to {
 			transform: scale(1);
+		}
+	}
+
+	@-webkit-keyframes fadeInOut {
+		0% {
+			opacity: 0;
+			transform: translateY(-1000px);
+		}
+		25% {
+			opacity: 1;
+		}
+		50% {
+			transform: translateY(0);
+		}
+		100% {
+			opacity: 0;
+			transform: translateY(-1000px);
 		}
 	}
 </style>
