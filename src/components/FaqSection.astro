@@ -22,14 +22,10 @@ import Quote from "./Quote.astro";
 	const cards = document.querySelectorAll(".faqCard");
 	cards.forEach((card) => {
 		let expanded = false;
+		const answer: HTMLElement | null = card?.querySelector(".answer");
 		card.addEventListener("click", () => {
 			expanded = !expanded;
-			const answer: HTMLElement | null = card?.querySelector(".answer");
-
-			answer &&
-				(expanded
-					? (answer.style.display = "block")
-					: (answer.style.display = "none"));
+			answer?.classList.toggle("expanded");
 		});
 	});
 </script>

@@ -12,6 +12,7 @@ const { question, answer } = Astro.props;
 
 <style lang="scss">
 	.faqCard {
+		transition: all 1s ease;
 		margin-top: var(--block-padded);
 		margin-inline: var(--narrow-inline);
 		padding: 1rem;
@@ -27,6 +28,13 @@ const { question, answer } = Astro.props;
 	}
 
 	.answer {
-		display: none;
+		opacity: 0;
+		max-height: 0;
+	}
+
+	.expanded {
+		opacity: 1;
+		max-height: 100px;
+		transition: all 1s ease;
 	}
 </style>
