@@ -33,13 +33,14 @@ const paintings = await Astro.glob("./paintings/*.md");
 				alt="Picture of me (Vincent Van Gogh) wearing a white t-shirt"
 			/>
 		</div>
-		<img
-			class="background"
-			width="100%"
-			height="auto"
-			src="/img/lower-foreground.png"
-			alt="Foreground of a small forest with a large tree visible on the left side of the window with some bushes at the end of the window"
-		/>
+		<div class="background">
+			<img
+				width="100%"
+				height="auto"
+				src="/img/lower-foreground.png"
+				alt="Foreground of a small forest with a large tree visible on the left side of the window with some bushes at the end of the window"
+			/>
+		</div>
 	</section>
 
 	<Quote
@@ -77,20 +78,30 @@ const paintings = await Astro.glob("./paintings/*.md");
 </BaseLayout>
 
 <style lang="scss">
+	@use "@styles/variables.scss" as media;
+
 	.background {
 		background-image: url("/img/background.jpg");
 		background-size: fill;
 		background-repeat: repeat;
 		background-position: center center;
+		& img {
+			animation: slideUp 1.5s ease 1 forwards;
+		}
 	}
 	.foreground-wrapper {
+		transition: all 0.5s ease;
 		position: relative;
-		height: 96vh;
+		height: 94vh;
+		@media only screen and (min-width: media.$media-phone) {
+			height: 98vh;
+		}
 		display: flex;
 		justify-content: center;
 		align-items: self-end;
 	}
 	.foreground {
+		animation: slideUp 3s ease 1 forwards;
 		position: absolute;
 		z-index: 2;
 	}
@@ -99,6 +110,9 @@ const paintings = await Astro.glob("./paintings/*.md");
 		z-index: 1;
 	}
 	.header {
+		& :first-child {
+			animation: slideDownFaded 0.5s ease-out 1 forwards;
+		}
 		height: 100vh;
 		position: absolute;
 		display: flex;
@@ -107,16 +121,40 @@ const paintings = await Astro.glob("./paintings/*.md");
 		top: clamp(10rem, 15vh, 15rem);
 		.overlap {
 			h1 {
+				opacity: 0;
+				animation: slideDownFaded 0.5s ease-out 1 forwards;
+				animation-delay: 0.2s;
 				color: var(--color-accent);
 				font-size: clamp(5rem, 21vw, 21rem);
 				position: absolute;
 			}
 			:last-child {
+				opacity: 0;
 				color: transparent;
 				text-stroke: clamp(0.2rem, 0.2vw, 0.5rem) var(--color-accent);
 				-webkit-text-stroke: clamp(0.2rem, 0.2vw, 0.5rem) var(--color-accent);
 				z-index: 100;
 			}
+		}
+	}
+
+	@-webkit-keyframes slideUp {
+		from {
+			transform: translateY(20rem);
+		}
+		to {
+			transform: translateY(0);
+		}
+	}
+
+	@-webkit-keyframes slideDownFaded {
+		from {
+			opacity: 0;
+			transform: translateY(-3rem);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
 		}
 	}
 </style>

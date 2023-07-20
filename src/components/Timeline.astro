@@ -58,9 +58,9 @@ const covers: Record<string, string>[] = await Astro.glob(
 
 	const buttons: NodeListOf<HTMLButtonElement> =
 		document.querySelectorAll(".btn-selector");
-	const informationHeader: Element | null =
+	const informationHeader: HTMLElement | null =
 		document.querySelector(".information h3");
-	const informationParagraph: Element | null =
+	const informationParagraph: HTMLElement | null =
 		document.querySelector(".information p");
 
 	const timelineSection = document.getElementById("timeline");
